@@ -10,6 +10,9 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    env:
+      TEST_ENV: dev
+      LOG_LEVEL: info
     steps:
     - uses: actions/checkout@v4
     
@@ -20,8 +23,8 @@ jobs:
         
     - name: Install dependencies
       run: |
-        rm -f ~/.npmrc  # Remove any saved auth if not needed
-        npm ci
+        npm install
+        chmod +x ./node_modules/.bin/playwright
         npx playwright install --with-deps
 
     - name: Install Allure
