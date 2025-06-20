@@ -5,6 +5,8 @@ on:
     branches: [ main, master, feature/TestGitHubActions ]
   pull_request:
     branches: [ main, master, feature/TestGitHubActions ]
+  schedule:
+    - cron: '15 9 * * *'  
 
 jobs:
   test:
