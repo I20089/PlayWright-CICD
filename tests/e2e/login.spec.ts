@@ -31,7 +31,6 @@ test('Negative login - invalid username', async ({ page }, testInfo) => {
   const invalidUsername = getRandomUsername();
   await loginPage.login(invalidUsername, 'Password123');
   await expect(page.locator('.show')).toContainText('Your username is invalid!');
-  await CustomAssertions.expectVisible(loginPage.logoutLink, 'Logout link should be visible after login');
   logger.info(`--- ENDING TEST: ${testInfo.title} ---`);
 });
 

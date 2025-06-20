@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    tools {
+        nodejs 'Node 18'
+    }
+
     environment {
         // Set your test environment here (dev, qa, prod)
         TEST_ENV = 'dev'
@@ -68,8 +72,9 @@ pipeline {
 
     post {
         always {
-            // Optionally, publish Allure report if you have the plugin
-            // allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
+            echo 'Pipeline finished (post block)'
+            // Publish Allure report in Jenkins if the plugin is installed
+            allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
         }
     }
 } 
