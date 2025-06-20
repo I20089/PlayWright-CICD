@@ -29,6 +29,7 @@ export default defineConfig({
   reporter: [
     ['allure-playwright'],
     ['html'],
+    ['json', { outputFile: 'playwright-report/report.json' }]
   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
